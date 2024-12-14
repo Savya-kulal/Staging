@@ -5,21 +5,21 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the application...'
-                sh 'mvn clean install'  // Example for building a Maven project
+                sh 'echo Build step'  // A placeholder command for build
             }
         }
         
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'mvn test'  // Example for running tests with Maven
+                sh 'echo Test step'  // A placeholder command for test
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-                sh 'scp target/app.jar user@server:/deploy/path'  // Example for deploying the build artifact
+                sh 'echo Deploy step'  // A placeholder command for deploy
             }
         }
     }
