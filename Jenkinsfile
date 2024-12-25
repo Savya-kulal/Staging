@@ -1,35 +1,12 @@
 pipeline {
-    agent any  // Runs the pipeline on any available agent
-
+    agent any 
     stages {
-        stage('Build') {
+        stage('build stage') {
             steps {
-                echo 'Building the application...'
-                sh 'echo Build step'  // A placeholder command for build
+                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'nn', url: 'https://github.com/Savya-kulal/Staging.git']])
+                sh 'mvn clean install"
             }
-        }
         
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                sh 'echo Test step'  // A placeholder command for test
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-                sh 'echo Deploy step'  // A placeholder command for deploy
-            }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline completed successfully!'
-        }
-        failure {
-            echo 'Pipeline failed.'
         }
     }
 }
